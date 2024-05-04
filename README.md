@@ -1,2 +1,1 @@
-# ThingAI
-ThingAI website
+uhh idk what to put here :3
