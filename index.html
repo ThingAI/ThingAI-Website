@@ -167,7 +167,7 @@
       function updateButtonText(ButtonText) {
         var button = document.querySelector(".dropdown button");
         button.innerHTML = ButtonText;
-        if (ButtonText == "ThingAI 2.0") {
+        if (ButtonText == "ThingAI 2.0 Lite") {
           var jsonObjectPrompt = {
             role: "system",
             content:
@@ -183,7 +183,7 @@
         ChatHistory[0] = jsonObjectPrompt;
       }
       document.addEventListener("DOMContentLoaded", function () {
-        updateButtonText("ThingAI 2.0");
+        updateButtonText("ThingAI 2.0 Lite");
       });
       var jsonObjectPrompt = {
         role: "system",
@@ -198,11 +198,11 @@
     <div class="top-bar">
       <div class="dropdown">
         <button id="dropdownButton" onclick="toggleDropdown()">
-          ThingAI 2.0
+          ThingAI 2.0 Lite
         </button>
         <div id="dropdownContent" class="dropdown-content">
-          <a href="#" onclick="updateButtonText('ThingAI 2.0')">ThingAI 2.0</a>
-          <a href="#" onclick="updateButtonText('ThingAI 1.0')">ThingAI 1.0</a>
+          <a href="#" onclick="updateButtonText('ThingAI 2.0')">ThingAI 2.0 Lite</a>
+          <a href="#" onclick="updateButtonText('ThingAI 1.0')">ThingAI 1.1 Lite</a>
         </div>
       </div>
       <button
