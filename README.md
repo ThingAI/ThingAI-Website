@@ -6,6 +6,6 @@ Credits:
 
 ThingAI - Cryptid
 
-Bug Fixes - windowsbuild3r
+Bug Fixes and Servers - windowsbuild3r
 
 More Bug Fixes - MubiLop
