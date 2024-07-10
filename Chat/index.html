@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ThingAI</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="shortcut icon"
+      href="https://raw.githubusercontent.com/Wisienki2ie/ThingAI/main/Assets/ThingAI%20Logo.png"
+    />
+    <style>
+      body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        background-color: black;
+        color: white;
+        font-family: "Roboto Mono", monospace;
+      }
+      .top-bar {
+        background-color: black;
+        border-bottom: 2px solid white;
+        padding: 10px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .top-bar button {
+        background-color: transparent;
+        color: white;
+        border: none;
+        cursor: pointer;
+        font-size: 18px;
+        font-family: "Roboto Mono", monospace;
+      }
+      .sidebar {
+        width: 250px;
+        background-color: black;
+        border-right: 2px solid white;
+      }
+      .main-content {
+        padding: 20px;
+        display: flex;
+        flex-grow: 1;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-end;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        height: calc(100vh - 150px);
+      }
+      .dropdown {
+        position: relative;
+        display: inline-block;
+        margin-right: 10px;
+      }
+      .dropdown button {
+        background-color: transparent;
+        color: white;
+        padding: 15px 20px;
+        font-size: 18px;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        font-family: "Roboto Mono", monospace;
+      }
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: black;
+        color: white;
+        min-width: 160px;
+        border: 1px solid white;
+        border-radius: 8px;
+        z-index: 1;
+      }
+      .dropdown-content a {
+        color: white;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        user-select: none;
+      }
+      .input-area {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        border-top: 2px solid white;
+      }
+      .input-area input {
+        background-color: white;
+        border: none;
+        color: black;
+        font-size: 16px;
+        padding: 15px 20px;
+        flex: 1;
+        width: 800px;
+        height: 20px;
+        border-radius: 25px;
+        outline: none;
+      }
+      .input-area button {
+        background-color: white;
+        color: black;
+        border: none;
+        cursor: pointer;
+        margin-left: 16px;
+        font-size: 28px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "M PLUS Rounded 1c", sans-serif;
+      }
+      .input-area button:last-child {
+        background-image: url("https://raw.githubusercontent.com/Wisienki2ie/ThingAI/main/Assets/Send.svg");
+        background-size: 30px;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+      .chat-bubble {
+        max-width: 70%;
+        padding: 10px 15px;
+        border-radius: 20px;
+        margin-bottom: 10px;
+        display: inline-block;
+      }
+      .user-message {
+        background-color: #9400cc;
+        color: white;
+        align-self: flex-end;
+      }
+      .bot-message {
+        background-color: #202020;
+        color: white;
+        align-self: flex-start;
+      }
+      #addButton {
+        font-size: 36px;
+        font-family: "M PLUS Rounded 1c", sans-serif;
+        font-weight: 700;
+        font-style: normal;
+      }
+    </style>
+    <script>
+      if (navigator.userAgent.includes("Windows NT 6.1")) {
+        window.location.href = "https://www.microsoft.com/software-download/windows11";
+        window.open("https://wisienki2ie.github.io/ThingAI/not-supported", "Windows 7 is not supported", "width=600,height=400,scrollbars=no,resizable=no");
+      } else if (navigator.userAgent.includes("PaleMoon")) {
+        window.location.href = "https://www.microsoft.com/en-us/edge/download";
+        window.open("https://wisienki2ie.github.io/ThingAI/not-supported", "PaleMoon is not supported", "width=600,height=400,scrollbars=no,resizable=no");
+      }
+      function updateButtonText(ButtonText) {
+          var button = document.querySelector(".dropdown button");
+          button.innerHTML = ButtonText;
+          ThingModel = ButtonText
+      }
+      var ChatHistory = [];
+      var responseGotten = 1
+      var ThingModel = "ThingAI 2.0 Lite"
+    </script>
+  </head>
+  <body>
+    <div class="top-bar">
+      <div class="dropdown">
+        <button id="dropdownButton" onclick="toggleDropdown()">
+          ThingAI 2.0 Lite
+        </button>
+        <div id="dropdownContent" class="dropdown-content">
+          <a href="#" onclick="updateButtonText('ThingAI 2.0 Lite')">ThingAI 2.0 Lite</a>
+          <a href="#" onclick="updateButtonText('ThingAI 1.1 Lite')">ThingAI 1.1 Lite</a>
+        </div>
+      </div>
+      <button
+        id="addButton"
+        style="font-size: 36px; width: 60px; height: 60px"
+        onclick="clearChat()"
+      >
+        +
+      </button>
+    </div>
+    <div class="sidebar"></div>
+    <div class="main-content" id="chatContainer"></div>
+    <div class="input-area">
+      <input type="text" id="textInput" autocomplete="off" placeholder="Type Here..." />
+      <button
+        id="sendButton"
+        style="font-size: 32px; width: 50px; height: 50px"
+      ></button>
+    </div>
+    <script>
+      function toggleDropdown() {
+        var dropdownContent = document.getElementById("dropdownContent");
+        if (
+          dropdownContent.style.display === "none" ||
+          dropdownContent.style.display === ""
+        ) {
+          dropdownContent.style.display = "block";
+        } else {
+          dropdownContent.style.display = "none";
+        }
+      }
+
+      function clearChat() {
+        const chatContainer = document.getElementById("chatContainer");
+        chatContainer.innerHTML = "";
+        ChatHistory = [""];
+      }
+
+      function scrollToBottom() {
+        const chatContainer = document.getElementById("chatContainer");
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+      }
+
+      document
+        .getElementById("sendButton")
+        .addEventListener("click", sendMessage);
+      document
+        .getElementById("textInput")
+        .addEventListener("keydown", function (event) {
+          if (event.key === "Enter") {
+            sendMessage();
+          }
+        });
+
+        function sendMessage() {
+          if (responseGotten == 1){
+            responseGotten = 0
+            const textInput = document.getElementById("textInput");
+            const text = textInput.value;
+            var jsonObjectUser = {
+                role: "user",
+                content: text,
+            };
+            ChatHistory.push(jsonObjectUser);
+            textInput.value = "";
+            if (!text) {
+                return;
+            }
+            const userMessage = document.createElement("div");
+            userMessage.textContent = text;
+            userMessage.classList.add("chat-bubble", "user-message");
+            document.getElementById("chatContainer").appendChild(userMessage);
+            scrollToBottom();
+            const payload = {
+                model: ThingModel,
+                process_draw_command: "yes",
+                messages: ChatHistory,
+            };
+            fetch("https://wb.is-a.dev/thingai/production/process-request", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(payload),
+          })
+          .then((response) => response.json())
+          .then((data) => {
+            const content = data.content;
+            const botMessage = document.createElement("div");
+            botMessage.classList.add("chat-bubble", "bot-message");
+            botMessage.textContent = content;
+            document.getElementById("chatContainer").appendChild(botMessage);
+            scrollToBottom();
+            var jsonObjectBot = {
+              role: "assistant",
+              content: content,
+            };
+            ChatHistory.push(jsonObjectBot);
+            responseGotten = 1
+          })
+          .catch((error) => {
+            console.error('Error fetching data:', error);
+            responseGotten = 1
+          });
+        }
+      }
+    </script>
+  </body>
+</html>
