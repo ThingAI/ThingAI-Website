@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Website</title>
+    <title>ThingAI</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
     <style>
         body {
@@ -11,7 +11,7 @@
             margin: 0;
             padding: 0;
             background-color: black;
-            background: url('https://raw.githubusercontent.com/Wisienki2ie/ThingAI/main/Assets/Background.svg') no-repeat center center fixed, black;
+            background: black url('https://raw.githubusercontent.com/Wisienki2ie/ThingAI/main/Assets/Background.svg') no-repeat center bottom;
             background-size: cover;
             color: white;
         }
@@ -21,7 +21,8 @@
             justify-content: space-between;
             align-items: center;
             background-color: black;
-            padding: 10px 20px;
+            padding: 15px 20px;
+            border-bottom: 2px solid white;
         }
 
         .title {
@@ -37,8 +38,9 @@
             background: none;
             color: white;
             border: none;
-            font-size: 16px;
+            font-size: 24px;
             cursor: pointer;
+            font-family: 'Roboto Mono', monospace;
         }
 
         .menu-button:hover {
@@ -50,8 +52,12 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
+            height: calc(100vh - 60px);
             text-align: center;
+        }
+
+        .content p {
+            font-size: 36px;
         }
 
         .chat-button {
@@ -59,10 +65,11 @@
             color: white;
             border: 2px solid white;
             border-radius: 12px;
-            padding: 10px 20px;
-            font-size: 16px;
+            padding: 10px 25px;
+            font-size: 25px;
+            font-family: 'Roboto Mono', monospace;
             cursor: pointer;
-            margin-top: 20px;
+            margin-top: 5px;
         }
 
         .chat-button:hover {
