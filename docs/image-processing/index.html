@@ -55,6 +55,16 @@
             text-decoration: underline;
         }
 
+        .content s a {
+            color: #5b2bc2;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .content s a:hover {
+            text-decoration: underline;
+        }
+
         .content {
             margin-left: 220px;
             padding: 20px;
@@ -77,8 +87,16 @@
         </ul>
     </div>
     <div class="content">
-        <h1>Example Title</h1>
-        <p>Example content.</p>
+        <h1>Important Notice</h1>
+        <p>Implementing image processing requires knowlege on <a href="https://thingai.vercel.app/docs/chat-history">Chat History</a>, so make sure to read that first.</p>
+        <h1>The Basics</h1>
+        <p>Image processing allows ThingAI to analize images and generate responses based on them.</p>
+        <h1>Setup</h1>
+        <p>Setting up image processing requires modifying the messages key in the request and turning it into an array, the original message should be first in the array inside a json with 2 keys, "type" set to "text" and "text" containing whatever the prompt was. To include the image create a second array item that contains a json with 2 keys, "type" set to "image-url" and "image-url" set a json with the key "url" set to either the url or data-url of your image.</p>
+        <h1>Example Message with Image Attached</h1>
+        <p>[{type: "text", text: "What is in this image?"}, {type: "image_url", image_url: {url: "<a href="https://t4.ftcdn.net/jpg/00/22/65/19/360_F_22651971_7F7kjSXyll7tQXiQFGSyhQP0jAr6TU9Q.jpg">https://t4.ftcdn.net/jpg/00/22/65/19/360_F_22651971_7F7kjSXyll7tQXiQFGSyhQP0jAr6TU9Q.jpg</a>"}}]</p>
+        <h1>Adding Image Processing to the API Request</h1>
+        <p>Image Processing doesn't require any further changes to the API request JSON.</p>
     </div>
 </body>
 </html>
