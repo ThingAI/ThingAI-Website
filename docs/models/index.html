@@ -77,8 +77,17 @@
         </ul>
     </div>
     <div class="content">
-        <h1>Example Title</h1>
-        <p>Example content.</p>
+        <h1>The basics</h1>
+        <p>Models determine the level of inteligence and features of ThingAI, for example ThingAI 2.0 will be smarter than ThingAI 1.1, but also ThingAI 2.0 Pro will have more features than ThingAI 2.0 Lite. For in depth information about each model visit the <a href="https://www.thingai.vercel.app/wiki">wiki</a>.</p>
+        <h1>Models endpoint</h1>
+        <p>The ThingAI API contains an endpoint for all the currently avaiable models, just add /models or /modelsRaw at the end of the API url to fetch the the current models.</p>
+        <h1>Example Models Endpoint JSONs</h1>
+        <p>Models endpoint:</p>
+        <p>{"object": "list", "data": [{"id": "ThingAI 2.0", "object": "model", "owned_by": "Cryptid", "type": "chat.completions"}]}</p>
+        <p>ModelsRaw endpoint:</p>
+        <p>{"object": "list", "data": [{"id": "thingai-2.0", "object": "model", "owned_by": "Cryptid", "type": "chat.completions"}]}</p>
+        <h1>Adding Model to the API Request</h1>
+        <p>The selected model must be included in the request json under the key "model".</p>
     </div>
 </body>
 </html>
