@@ -16,7 +16,7 @@
     />
     <link
       rel="shortcut icon"
-      href="https://raw.githubusercontent.com/Wisienki2ie/ThingAI/main/Assets/ThingAI%20Logo.png"
+      href="https://raw.githubusercontent.com/NotCryptid/ThingAI/main/Assets/ThingAI%20Logo.png"
     />
     <style>
       body {
@@ -128,7 +128,7 @@
         font-family: "M PLUS Rounded 1c", sans-serif;
       }
       .input-area button:last-child {
-        background-image: url("https://raw.githubusercontent.com/Wisienki2ie/ThingAI/main/Assets/Send.svg");
+        background-image: url("https://raw.githubusercontent.com/NotCryptid/ThingAI/main/Assets/Send.svg");
         background-size: 30px;
         background-repeat: no-repeat;
         background-position: center;
@@ -160,10 +160,10 @@
     <script>
       if (navigator.userAgent.includes("Windows NT 6.1")) {
         window.location.href = "https://www.microsoft.com/software-download/windows11";
-        window.open("https://wisienki2ie.github.io/ThingAI/not-supported", "Windows 7 is not supported", "width=600,height=400,scrollbars=no,resizable=no");
+        window.open("https://thingai.vercel.app/error/not-supported", "Windows 7 is not supported", "width=600,height=400,scrollbars=no,resizable=no");
       } else if (navigator.userAgent.includes("PaleMoon")) {
         window.location.href = "https://www.microsoft.com/en-us/edge/download";
-        window.open("https://wisienki2ie.github.io/ThingAI/not-supported", "PaleMoon is not supported", "width=600,height=400,scrollbars=no,resizable=no");
+        window.open("https://thingai.vercel.app/error/not-supported", "PaleMoon is not supported", "width=600,height=400,scrollbars=no,resizable=no");
       }
       function updateButtonText(ButtonText) {
           var button = document.querySelector(".dropdown button");
@@ -262,7 +262,7 @@
                 process_draw_command: "yes",
                 messages: ChatHistory,
             };
-            fetch("https://wb.is-a.dev/thingai/production/process-request", {
+            fetch("https://thingai-api-experimental.vercel.app/process-request", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
