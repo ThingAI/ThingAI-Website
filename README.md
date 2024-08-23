@@ -1,8 +1,6 @@
-Haiii hewwo this is the ThingAI website and stuff
+ThingAI website
 
-ThingAI 2.0 Coming soon i hope :3
-
-Credits:
+# Credits:
 
 ThingAI - Cryptid
 
