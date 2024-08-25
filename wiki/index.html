@@ -3,27 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ThingAI Wiki</title>
+    <title>ThingAI Docs - Home</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
-    <link href="https://raw.githubusercontent.com/NotCryptid/ThingAI/main/Assets/ThingAI%20Logo.png" rel="shortcut icon">
+    <link
+      rel="shortcut icon"
+      href="https://raw.githubusercontent.com/NotCryptid/ThingAI/main/Assets/ThingAI%20Logo.png"
+    />
     <style>
         body {
             margin: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: black;
-            color: white;
-            font-family: Arial, sans-serif;
-        }
-        h1 {
-            margin: 0;
             font-family: 'Roboto Mono', monospace;
+            background-color: #000000;
+            color: #ffffff;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 200px;
+            background-color: #000000;
+            border-right: 2px solid #ffffff;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 10px;
+        }
+
+        .sidebar ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .sidebar ul li p {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .sidebar ul li b a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 30px;
+        }
+
+        .sidebar ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .content {
+            margin-left: 220px;
+            padding: 20px;
+        }
+        
+        .content p a {
+            color: #5b2bc2;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .content p a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
-    <h1>The Wiki isn't created yet, we are sorry for the inconvenience.</h1>
+    <div class="sidebar">
+        <ul>
+            <li><b><a href="https://thingai.vercel.app">ThingAI</a></b></li>
+            <li><p>General</p>
+            <li><a href="https://thingai.vercel.app/wiki">> Home</a></li>
+            <li><a href="https://thingai.vercel.app/wiki/development">Early Days</a></li>
+            <li><a href="https://thingai.vercel.app/wiki/api-development">API Development</a></li>
+            <li><p>Models</p>
+            <li><a href="https://thingai.vercel.app/wiki/thingai-20">ThingAI 2.0</a></li>
+            <li><a href="https://thingai.vercel.app/wiki/thingai-11">ThingAI 1.1</a></li>
+            <li><a href="https://thingai.vercel.app/wiki/thingai-10">ThingAI 1.0</a></li>
+            <li><p>Updates</p>
+            <li><a href="https://thingai.vercel.app/wiki/update-21">Version 2.1</a></li>
+            <li><a href="https://thingai.vercel.app/wiki/update-20">Version 2.0</a></li>
+            <li><a href="https://thingai.vercel.app/wiki/update-12">Version 1.2</a></li>
+            <li><a href="https://thingai.vercel.app/wiki/update-11">Version 1.1</a></li>
+            <li><a href="https://thingai.vercel.app/wiki/update-10">Version 1.0</a></li>
+            <li><p>Cancelled/Discontinued Things</p>
+            <li><a href="https://thingai.vercel.app/wiki/vision">ThingAI Vision</a></li>
+            <li><a href="https://thingai.vercel.app/wiki/bot">ThingAI Bot</a></li>
+            <li><a href="https://thingai.vercel.app/wiki/altronos">AltronOS</a></li>
+            <li><a href="https://thingai.vercel.app/wiki/dumbass">Dumbass 1.5+</a></li>
+            <li><p>Things in Development</p>
+            <li><a href="https://thingai.vercel.app/wiki/video">ThingAI Video</a></li>
+            <li><a href="https://thingai.vercel.app/wiki/music">ThingAI Music</a></li>
+        </ul>
+    </div>
+    <div class="content">
+        <h1>Welcome to the ThingAI Wiki</h1>
+        <p>This is the main page, use the sidebar to navigate. Wiki pages will be made soon hopefully</p>
+    </div>
 </body>
 </html>
