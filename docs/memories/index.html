@@ -88,8 +88,16 @@
         </ul>
     </div>
     <div class="content">
-        <h1>Feature unconfirmed</h1>
-        <p>Content coming soon.</p>
+        <h1>The Basics</h1>
+        <p>If you don't want your ThingAI to have partial dementia then you need to setup the memory system. Memories are the long term chat history, ThingAI will generate memories of important things ever once in a while in order to remember them.</p>
+        <h1>Memory JSON</h1>
+        <p>The memory json is just a long json consisting of every memory that ThingAI ever created. Keep in mind that memories are limited to 100 per request.</p>
+        <h1>Example Memory JSON</h1>
+        <p>{"26-08-2024 12:12:39": "The user said that they like the color purple really much", "26-08-2024 12:16:36": "The user said their cats name is fluffy."}</p>
+        <h1>Storing Memories</h1>
+        <p>Storing memories is quite simple, whenever ThingAI creates a memory the "memory" key in the response will be set to the memory instead of null, now you want to take that memory and add it to the end of a json with the key name being the current date and time.</p>
+        <h1>Adding Memories to the API Request</h1>
+        <p>The memory json should be added to the API Request json under the key "memories".</p>
     </div>
 </body>
 </html>
