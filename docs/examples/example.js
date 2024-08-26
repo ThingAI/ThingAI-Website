@@ -18,5 +18,3 @@ fetch(apiUrl, {
 .then(response => response.json())
 .then(json => console.log('Response:', json))
 .catch(error => console.error('Error:', error));
-
-
