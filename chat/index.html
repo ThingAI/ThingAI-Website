@@ -229,6 +229,10 @@
         ChatHistory = [""];
       }
 
+      function getTime() {
+          return `${String(new Date().getDate()).padStart(2, '0')}.${String(new Date().getMonth() + 1).padStart(2, '0')}.${new Date().getFullYear()} ${String(new Date().getHours()).padStart(2, '0')}:${String(new Date().getMinutes()).padStart(2, '0')}:${String(new Date().getSeconds()).padStart(2, '0')}`;
+      }
+
       function scrollToBottom() {
         const chatContainer = document.getElementById("chatContainer");
         chatContainer.scrollTop = chatContainer.scrollHeight;
@@ -268,6 +272,9 @@
                 model: ThingModel,
                 process_draw_command: "yes",
                 messages: ChatHistory,
+                memories: {},
+                time: getTime(),
+                dmmu_enabled: "false",
             };
             fetch("https://thingai-api-experimental.vercel.app/process-request", {
             method: "POST",
