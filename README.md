@@ -1,11 +1,2 @@
-ThingAI website
-
-# Credits:
-
-ThingAI - Cryptid
-
-Bug Fixes and Servers - windowsbuild3r
-
-More Bug Fixes - MubiLop
-
-Even more Bug Fixes - Milo
+# Super epic cool readme
+This is the ThingAI website if you didn't notice
