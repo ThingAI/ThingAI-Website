@@ -97,7 +97,7 @@
         <h1>Storing Memories</h1>
         <p>Storing memories is quite simple, whenever ThingAI creates a memory the "memory" key in the response will be set to the memory instead of null, now you want to take that memory and add it to the end of a json with the key name being the current date and time.</p>
         <h1>Time perception</h1>
-        <p>Adding time perception is quite simple, just add the current date and time such as: "26.08.2024 12:37:54", to the API Request json under the key "time".</p>
+        <p>Adding time perception is quite simple as its ip based, you can either set it to off if you don't want it, set it to auto if you do want it or you can set it to a custom ip, then put your choice under the key "ip".</p>
         <h1>DMMU</h1>
         <p>The DMMU or Dynamic Memory Management Unit when enabled, optimizes memories in each request to make sure they fit in the 100 memory limit without losing anything important. You can alternatively set it to auto which will only activate the DMMU when the memory count surpasses 100. Keep in mind that the DMMU will extend the request processing time.</p>
         <h1>Adding Memories to the API Request</h1>
