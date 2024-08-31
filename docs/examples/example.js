@@ -5,7 +5,8 @@ const data = {
     messages: [{"role": "user", "content": "Hello ThingAI!"}],
     database: {"Best AI": "ThingAI", "Favourite color": "purple"},
     memories: {"26-08-2024 12:12:39": "The user said that they like the color purple really much"},
-    time: "26.08.2024 12:29:14"
+    ip: "auto",
+    dmmu_enabled: "auto"
 };
 
 fetch(apiUrl, {
