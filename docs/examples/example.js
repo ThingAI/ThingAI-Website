@@ -1,4 +1,4 @@
-const apiUrl = 'https://thingai-api.vercel.app/process-request';
+const apiUrl = 'https://api.thingai.xyz/process-request';
 const data = {
     model: 'ThingAI 2.0 Pro',
     process_draw_command: "yes",
