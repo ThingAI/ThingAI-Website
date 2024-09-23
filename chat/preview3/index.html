@@ -28,6 +28,7 @@
         color: white;
         font-family: "Roboto Mono", monospace;
       }
+      
       .top-bar {
         background-color: black;
         border-bottom: 2px solid white;
@@ -36,6 +37,7 @@
         justify-content: space-between;
         align-items: center;
       }
+      
       .top-bar button {
         background-color: transparent;
         color: white;
@@ -44,11 +46,13 @@
         font-size: 18px;
         font-family: "Roboto Mono", monospace;
       }
+      
       .sidebar {
         width: 250px;
         background-color: black;
         border-right: 2px solid white;
       }
+      
       .main-content {
         padding: 20px;
         display: flex;
@@ -60,11 +64,13 @@
         -webkit-overflow-scrolling: touch;
         height: calc(100vh - 150px);
       }
+      
       .dropdown {
         position: relative;
         display: inline-block;
         margin-right: 10px;
       }
+      
       .dropdown button {
         background-color: transparent;
         color: white;
@@ -76,6 +82,7 @@
         align-items: center;
         font-family: "Roboto Mono", monospace;
       }
+      
       .dropdown-content {
         display: none;
         position: absolute;
@@ -261,8 +268,11 @@
                 model: ThingModel,
                 process_draw_command: "yes",
                 messages: ChatHistory,
+                memories: {},
+                ip: "auto",
+                dmmu_enabled: "false",
             };
-            fetch("https://thingai-api-experimental.vercel.app/process-request", {
+            fetch("https://api.thingai.xyz/process-request", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
