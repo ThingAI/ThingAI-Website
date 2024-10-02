@@ -69,6 +69,11 @@
         .content p a:hover {
             text-decoration: underline;
         }
+
+        .loaded-content {
+            line-height: 1.5;
+            margin: 0;
+        }
     </style>
 </head>
 <body>
@@ -103,14 +108,14 @@
             fetch(fileUrl)
             .then(response => response.text())
             .then(data => {
-                document.getElementById('content').innerHTML = `<pre style="white-space: pre-wrap; word-wrap: break-word;">${data}</pre>`;
+                document.getElementById('content').innerHTML = data;
             })
             .catch(error => {
                 console.error('Error fetching the file:', error);
                 document.getElementById('content').innerHTML = '<p>Page not found.</p>';
             });
         } else {
-            document.getElementById('content').innerHTML = document.getElementById('default-content').innerHTML;
+            document.getElementById('content').innerHTML = '<p>Welcome to the ThingAI Documentation</p>';
         }
 
         // Highlight the selected page in the sidebar
