@@ -82,33 +82,77 @@
         <ul>
             <li><b><a href="https://thingai.xyz">ThingAI</a></b></li>
             <li><p>General</p>
-            <li><a href="https://thingai.xyz/wiki">> Home</a></li>
-            <li><a href="https://thingai.xyz/wiki/development">Development</a></li>
-            <li><a href="https://thingai.xyz/wiki/api-development">API Development</a></li>
+            <li><a id="home-link" href="https://thingai.xyz/wiki">> Home</a></li>
+            <li><a id="development-link" href="https://thingai.xyz/wiki?development">Development</a></li>
+            <li><a id="api-development-link" href="https://thingai.xyz/wiki?api-development">API Development</a></li>
             <li><p>Models</p>
-            <li><a href="https://thingai.xyz/wiki/thingai-20">ThingAI 2.0</a></li>
-            <li><a href="https://thingai.xyz/wiki/thingai-11">ThingAI 1.1</a></li>
-            <li><a href="https://thingai.xyz/wiki/thingai-10">ThingAI 1.0</a></li>
+            <li><a id="thingai-20-link" href="https://thingai.xyz/wiki?thingai-20">ThingAI 2.0</a></li>
+            <li><a id="thingai-11-link" href="https://thingai.xyz/wiki?thingai-11">ThingAI 1.1</a></li>
+            <li><a id="thingai-10-link" href="https://thingai.xyz/wiki?thingai-10">ThingAI 1.0</a></li>
             <li><p>Updates</p>
-            <li><a href="https://thingai.xyz/wiki/update-21">Update 2.1</a></li>
-            <li><a href="https://thingai.xyz/wiki/update-20">Update 2.0</a></li>
-            <li><a href="https://thingai.xyz/wiki/update-12">Update 1.2</a></li>
-            <li><a href="https://thingai.xyz/wiki/update-11">Update 1.1</a></li>
-            <li><a href="https://thingai.xyz/wiki/update-10">Update 1.0</a></li>
+            <li><a id="update-21-link" href="https://thingai.xyz/wiki?update-21">Update 2.1</a></li>
+            <li><a id="update-20-link" href="https://thingai.xyz/wiki?update-20">Update 2.0</a></li>
+            <li><a id="update-12-link" href="https://thingai.xyz/wiki?update-12">Update 1.2</a></li>
+            <li><a id="update-11-link" href="https://thingai.xyz/wiki?update-11">Update 1.1</a></li>
+            <li><a id="update-10-link" href="https://thingai.xyz/wiki?update-10">Update 1.0</a></li>
             <li><p>Things in Development</p>
-            <li><a href="https://thingai.xyz/wiki/video">ThingAI Video</a></li>
-            <li><a href="https://thingai.xyz/wiki/music">ThingAI Music</a></li>
+            <li><a id="video-link" href="https://thingai.xyz/wiki?video">ThingAI Video</a></li>
+            <li><a id="music-link" href="https://thingai.xyz/wiki?music">ThingAI Music</a></li>
             <li><p>Discontinued Things</p>
-            <li><a href="https://thingai.xyz/wiki/bot">ThingAI Bot</a></li>
-            <li><a href="https://thingai.xyz/wiki/altronos">AltronOS</a></li>
-            <li><a href="https://thingai.xyz/wiki/dumbass">Dumbass 1.5+</a></li>
+            <li><a id="bot-link" href="https://thingai.xyz/wiki?bot">ThingAI Bot</a></li>
+            <li><a id="altronos-link" href="https://thingai.xyz/wiki?altronos">AltronOS</a></li>
+            <li><a id="dumbass" href="https://thingai.xyz/wiki?dumbass">Dumbass 1.5+</a></li>
             <li><p>Cancelled Things</p>
-            <li><a href="https://thingai.xyz/wiki/vision">ThingAI Vision</a></li>
+            <li><a id="vision-link" href="https://thingai.xyz/wiki?vision">ThingAI Vision</a></li>
         </ul>
     </div>
     <div class="content">
-        <h1>Welcome to the ThingAI Wiki</h1>
-        <p>This is the main page, use the sidebar to navigate. Wiki pages will be made soon hopefully</p>
     </div>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const fileName = params.toString() ? `${params.toString().slice(0, -1)}.txt` : null;
+
+        if (fileName) {
+            const fileUrl = "https://raw.githubusercontent.com/ThingAI/ThingAI-Website/main/wiki/content/" + fileName;
+            fetch(fileUrl)
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('content').innerHTML = data;
+            })
+            .catch(error => {
+                console.error('Error fetching the file:', error);
+                document.getElementById('content').innerHTML = '<p>Page not found.</p>';
+            });
+        } else {
+            document.getElementById('content').innerHTML = '<h1>Welcome to the ThingAI Wiki</h1> <p>This is the main page, use the sidebar to navigate. Wiki pages will be made soon hopefully</p>';
+        }
+
+        // Highlight the selected page in the sidebar
+        const pageLinks = {
+            '': 'home-link',
+            'development': 'development-link',
+            'api-development': 'api-development-link',
+            'thingai-20': 'thingai-20-link',
+            'thingai-11': 'thingai-11-link',
+            'thingai-10': 'thingai-10-link',
+            'update-21': 'update-21-link',
+            'update-20': 'update-20-link',
+            'update-12': 'update-12-link',
+            'update-11': 'update-11-link',
+            'update-10': 'update-10-link',
+            'video': 'video-link',
+            'music': 'music-link',
+            'bot': 'bot-link',
+            'altronos': 'altronos-link',
+            'dumbass': 'dumbass',
+            'vision': 'vision-link'
+        };
+
+        const currentPage = params.keys().next().value || '';
+        if (pageLinks[currentPage]) {
+            document.getElementById(pageLinks[currentPage]).innerHTML = '> ' + document.getElementById(pageLinks[currentPage]).innerHTML;
+        }
+    </script>
 </body>
 </html>
