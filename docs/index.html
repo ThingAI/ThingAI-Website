@@ -96,7 +96,7 @@
 
     <script>
         const params = new URLSearchParams(window.location.search);
-        const fileName = params.toString() ? `${params.toString()}.txt` : null;
+        const fileName = params.toString() ? `${decodeURIComponent(params.toString())}.txt` : null;
 
         if (fileName) {
             const fileUrl = "https://raw.githubusercontent.com/ThingAI/ThingAI-Website/main/docs/content/" + fileName;
