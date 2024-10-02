@@ -75,16 +75,16 @@
     <div class="sidebar">
         <ul>
             <li><b><a href="https://thingai.xyz">ThingAI</a></b></li>
-            <li><a href="https://thingai.xyz/docs">> Home</a></li>
-            <li><a href="https://thingai.xyz/docs?chat-history">Chat History</a></li>
-            <li><a href="https://thingai.xyz/docs?memories">Memories</a></li>
-            <li><a href="https://thingai.xyz/docs?models">Models</a></li>
-            <li><a href="https://thingai.xyz/docs?databases">Databases</a></li>
-            <li><a href="https://thingai.xyz/docs?image-generation">Image Generation</a></li>
-            <li><a href="https://thingai.xyz/docs?image-processing">Image Processing</a></li>
-            <li><a href="https://thingai.xyz/docs?api-urls">API Urls</a></li>
-            <li><a href="https://thingai.xyz/docs?penguinmod-extension">PenguinMod Extension</a></li>
-            <li><a href="https://thingai.xyz/docs?examples">Examples</a></li>
+            <li><a href="https://thingai.xyz/docs" id="home-link">> Home</a></li>
+            <li><a href="https://thingai.xyz/docs?chat-history" id="chat-history-link">Chat History</a></li>
+            <li><a href="https://thingai.xyz/docs?memories" id="memories-link">Memories</a></li>
+            <li><a href="https://thingai.xyz/docs?models" id="models-link">Models</a></li>
+            <li><a href="https://thingai.xyz/docs?databases" id="databases-link">Databases</a></li>
+            <li><a href="https://thingai.xyz/docs?image-generation" id="image-generation-link">Image Generation</a></li>
+            <li><a href="https://thingai.xyz/docs?image-processing" id="image-processing-link">Image Processing</a></li>
+            <li><a href="https://thingai.xyz/docs?api-urls" id="api-urls-link">API Urls</a></li>
+            <li><a href="https://thingai.xyz/docs?penguinmod-extension" id="penguinmod-extension-link">PenguinMod Extension</a></li>
+            <li><a href="https://thingai.xyz/docs?examples" id="examples-link">Examples</a></li>
         </ul>
     </div>
     <div class="content" id="content">
@@ -109,6 +109,25 @@
                 });
         } else {
             document.getElementById('content').innerHTML = document.getElementById('default-content').innerHTML;
+        }
+
+        // Highlight the selected page in the sidebar
+        const pageLinks = {
+            '': 'home-link',
+            'chat-history': 'chat-history-link',
+            'memories': 'memories-link',
+            'models': 'models-link',
+            'databases': 'databases-link',
+            'image-generation': 'image-generation-link',
+            'image-processing': 'image-processing-link',
+            'api-urls': 'api-urls-link',
+            'penguinmod-extension': 'penguinmod-extension-link',
+            'examples': 'examples-link'
+        };
+
+        const currentPage = params.keys().next().value || '';
+        if (pageLinks[currentPage]) {
+            document.getElementById(pageLinks[currentPage]).innerHTML = '> ' + document.getElementById(pageLinks[currentPage]).innerHTML;
         }
     </script>
 </body>
