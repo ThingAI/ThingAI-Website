@@ -1,0 +1,22 @@
+<div class="content">
+        <h1>Extension Downloads</h1>
+        <p><a href="https://raw.githubusercontent.com/ThingAI/ThingAI-extension/main/ThingAI%201.2.js">Version 1.2</a></p>
+        <h1>The Basics</h1>
+        <p>To start you need to create a new instance, you can name it whatever you want, then select your desired model and api.</p>
+        <h1>Message Management</h1>
+        <p>Use the Send text block to talk to ThingAI, make sure to set the instance name correctly.</p><br>
+        <p>Use the Generate with no context block to talk to ThingAI without any chat history.</p><br>
+        <p>Use the Attach Image block to give ThingAI an image to analyze.</p>
+        <h1>Instance Management</h1>
+        <p>Use the Create instance block to create a new instance of ThingAI.</p><br>
+        <p>Use the Delete instance block to delete an instance of ThingAI.</p><br>
+        <p>Use the reset chat history block to delete all the memories of a ThingAI instance.</p><br>
+        <p>Use the Chat history as an array block to get the whole chat history of a ThingAI instance.</p><br>
+        <p>Use the Import chat history to overwrite the memories of a ThingAI instance.</p><br>
+        <p>Use the Import chats from to either merge/update existing chats or delete all chatbots and start over.</p><br>
+        <p>Use the All chats as Arrays block to get all the conversations from every ThingAI instance.</p><br>
+        <p>Use the Currently active chats block to get the name of every active ThingAI instance.</p>
+        <h1>Image Generation</h1>
+        <p>Use the Generate and get response block to manually generate an image and get its url.</p><br>
+        <p>Use the Generate and import as costume block to manually generate an image and import it as a new costume.</p>
+    </div>
