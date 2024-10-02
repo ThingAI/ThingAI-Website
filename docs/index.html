@@ -88,9 +88,6 @@
         </ul>
     </div>
     <div class="content" id="content">
-        <!-- Content will be loaded here -->
-    </div>
-    <div id="default-content">
         <h1>Welcome to the ThingAI Documentation</h1>
         <p>This is the main page, use the sidebar to navigate.</p>
         <h1>Extension Downloads</h1>
@@ -102,7 +99,7 @@
         const fileName = params.toString() ? `${params.toString()}.txt` : null;
 
         if (fileName) {
-            fetch(fileName)
+            fetch("https://raw.githubusercontent.com/ThingAI/ThingAI-Website/main/docs/content/" + fileName)
                 .then(response => response.text())
                 .then(data => {
                     document.getElementById('content').innerHTML = data;
