@@ -1,0 +1,22 @@
+<h1>API Urls</h1>
+<p>Here is a full list of every API Url and endpoints.</p>
+<h1>Production</h1>
+<p1><a href="https://api.thingai.xyz/">https://api.thingai.xyz/</a></p1><br>
+<p1>https://api.thingai.xyz/process-request</p1><br>
+<p1>https://api.thingai.xyz/models</p1><br>
+<p1>https://api.thingai.xyz/rawmodels</p1>
+<h1>Experimental</h1>
+<p1><a href="https://xapi.thingai.xyz/">https://xapi.thingai.xyz/</a></p1><br>
+<p1>https://xapi.thingai.xyz/process-request</p1><br>
+<p1>https://xapi.thingai.xyz/models</p1><br>
+<p1>https://xapi.thingai.xyz/rawmodels</p1>
+<h1>Production Backup</h1>
+<p1><a href="https://wb.is-a.dev/thingai/production/">https://wb.is-a.dev/thingai/production/</a></p1><br>
+<p1>https://wb.is-a.dev/thingai/production/process-request</p1><br>
+<p1>https://wb.is-a.dev/thingai/production/models</p1><br>
+<p1>https://wb.is-a.dev/thingai/production/rawmodels</p1>
+<h1>Experimental Backup</h1>
+<p1><a href="https://wb.is-a.dev/thingai/experimental/">https://wb.is-a.dev/thingai/experimental/</a></p1><br>
+<p1>https://wb.is-a.dev/thingai/experimental/process-request</p1><br>
+<p1>https://wb.is-a.dev/thingai/experimental/models</p1><br>
+<p1>https://wb.is-a.dev/thingai/experimental/rawmodels</p1>

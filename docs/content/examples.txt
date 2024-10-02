@@ -1,0 +1,8 @@
+<h1>Code Examples</h1>
+<p>Here are some code examples on how to use the ThingAI API.</p>
+<h1>JavaScript</h1>
+<img src="https://raw.githubusercontent.com/ThingAI/ThingAI-Website/main/docs/content/javascript%20example.png" alt="JavaScript Example">
+<p><a href="https://github.com/ThingAI/ThingAI-Website/blob/main/docs/content/example.js">Download JavaScript Example</a></p>
+<h1>PenguinMod</h1>
+<img src="https://raw.githubusercontent.com/ThingAI/ThingAI-Website/main/docs/content/penguinmod%20example.png" alt="PenguinMod Example">
+<p><a href="https://github.com/ThingAI/ThingAI-Website/blob/main/docs/content/example.pmp">Download PenguinMod Example</a></p>

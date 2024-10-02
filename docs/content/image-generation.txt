@@ -1,0 +1,10 @@
+<h1>The Basics</h1>
+<p>Image generation allows you create images never seen before using different models all within ThingAI.</p>
+<h1>Image Generation Command Processing</h1>
+<p>In case you want to use a different image generation method we've added the option to disable image generation processing to make ThingAI just return the raw draw command. By default generated images are returned under an "image" key, but if you set process_draw_command to "legacy", generated images will be returned under the content key starting with the keyword "&^%image".</p>
+<h1>Example Unprocessed Draw Command</h1>
+<p>&^%draw1 Draw a dancing cat</p>
+<h1>Supported Image Generation Models</h1>
+<p>ThingAI currently supports image generation using "DALLE-3", "Pastel Mix Anime", "I can't believe its not a photograph" and "Am i Real".</p>
+<h1>Adding Image generation to the API Request</h1>
+<p>Image generation itself doesn't need anything new in the API request but you need to add a key named "process_draw_command" and either set it to "yes", "legacy" or "no" depending if you want ThingAI to generate the image for you and what response format do you want it to use.</p>

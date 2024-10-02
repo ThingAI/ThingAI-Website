@@ -1,0 +1,14 @@
+<h1>The Basics</h1>
+<p>If you don't want your ThingAI to have partial dementia then you need to setup the memory system. Memories are the long term chat history, ThingAI will generate memories of important things ever once in a while in order to remember them.</p>
+<h1>Memory JSON</h1>
+<p>The memory json is just a long json consisting of every memory that ThingAI ever created. Keep in mind that memories are limited to 100 per request.</p>
+<h1>Example Memory JSON</h1>
+<p>{"26.08.2024 12:12:39": "The user said that they like the color purple really much", "26.08.2024 12:16:36": "The user said their cats name is fluffy."}</p>
+<h1>Storing Memories</h1>
+<p>Storing memories is quite simple, whenever ThingAI creates a memory the "memory" key in the response will be set to the memory instead of null, now you want to take that memory and add it to the end of a json with the key name being the current date and time.</p>
+<h1>Time perception</h1>
+<p>Time perception is based on the users ip address, you can either turn this feature off, set it to auto or use your own custom ip address, to that just set the value to the ip address you wanna use. Include either your mode or custom ip address under the key "ip", keep in mind turning this feature off will make memories less acurate.</p>
+<h1>DMMU</h1>
+<p>The DMMU or Dynamic Memory Management Unit when enabled, optimizes memories in each request to make sure they fit in the 100 memory limit without losing anything important. You can alternatively set it to auto which will only activate the DMMU when the memory count surpasses 100. Keep in mind that the DMMU will extend the request processing time.</p>
+<h1>Adding Memories to the API Request</h1>
+<p>The memory json should be added to the API Request json under the key "memories" and the DMMU should be set as "true", "auto" or "false" under the key "dmmu_enabled".</p>

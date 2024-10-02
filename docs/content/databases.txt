@@ -1,0 +1,9 @@
+<h1>Databases are currently only avaiable in the Pro Models</h1>
+<h1>The Basics</h1>
+<p>Databases are a way to give ThingAI information it didn't know before or correct/create missinformation.</p>
+<h1>Creating databases</h1>
+<p>Databases can be created by simply making a json and putting all of the information you want ThingAI to know inside different keys, but databases can also be created by sending messages with the system role as those will be automatically included inside a database key.</p>
+<h1>Example Database</h1>
+<p>{"my favourite color": "purple", "coolest ai ever": "ThingAI"}</p>
+<h1>Adding the database to the API Request</h1>
+<p>The database json should be added to the API Request json under the key "database".</p>
