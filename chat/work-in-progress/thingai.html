@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ThingAI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="https://raw.githubusercontent.com/ThingAI/ThingAI-Website/main/Assets/ThingAI%20Logo.png"/>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: 'Roboto Mono', monospace;
+            padding-bottom: 60px;
+            margin: 0;
+        }
+        .chatbox-container {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            background-color: black;
+            padding: 10px;
+            box-sizing: border-box;
+            border-top: 1px solid white;
+        }
+        .topbar-container {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: black;
+            padding: 10px;
+            box-sizing: border-box;
+            border-bottom: 1px solid white;
+        }
+        .chatbox {
+            flex-grow: 1;
+            padding: 9.5px;
+            border: 0px solid white;
+            border-radius: 20px;
+            color: black;
+            background-color: white;
+            font-size: 1em;
+            box-sizing: border-box;
+            margin: 0 10px;
+            align-items: center;
+            font-family: 'Roboto Mono', monospace;
+            resize: none;
+            height: 40px;
+            max-height: 120px;
+            overflow-y: auto;
+        }
+        .attachment-button {
+            background-color: white;
+            border: none;
+            padding: 10px;
+            padding-left: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .send-button, .plus-button {
+            background-color: white;
+            border: none;
+            padding: 10px;
+            margin-right: 0px;
+            border-radius: 50%;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .send-button img, .attachment-button img, .plus-button img {
+            width: 25px;
+            height: 25px;
+            margin-right: 1px;
+        }
+        .plus-button img {
+            width: 40px;
+            height: 40px;
+        }
+        .dropdown {
+            background-color: white;
+            color: black;
+            border: 1px solid white;
+            border-radius: 20px;
+            padding: 9px;
+            font-family: 'Roboto Mono', monospace;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            position: relative;
+            font-size: 1em;
+            margin-left: 0px;
+            padding-left: 10px;
+        }
+        .dropdown::after {
+            content: '▼';
+            font-size: 12px;
+            color: black;
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none;
+        }
+        .chat-messages {
+            padding: 10px;
+            margin-top: 60px;
+            margin-bottom: 60px;
+            display: flex;
+            flex-direction: column;
+        }
+        .message {
+            background-color: white;
+            color: black;
+            padding: 10px;
+            border-radius: 20px;
+            margin: 10px 0;
+            align-self: flex-end;
+            max-width: 65%;
+        }
+        .response-message {
+            background-color: #272727;
+            color: white;
+            padding: 10px;
+            border-radius: 20px;
+            margin: 10px 0;
+            align-self: flex-start;
+            max-width: 65%;
+        }
+        .attachment-preview {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            object-fit: cover;
+        }
+        .message img {
+            max-width: 100px;
+            max-height: 100px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        .image-message {
+            max-width: 200px;
+            max-height: 200px;
+            border-radius: 20px;
+            margin: 10px 0;
+            align-self: flex-end;
+            overflow: hidden;
+        }
+        .image-message img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .thinking-bubble {
+            background-color: #272727;
+            color: white;
+            padding: 10px;
+            border-radius: 20px;
+            margin: 10px 0;
+            align-self: flex-start;
+            max-width: fit-content;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .thinking-bubble::before, .thinking-bubble::after, .thinking-bubble .third-dot {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            margin: 0 2px;
+            background-color: white;
+            border-radius: 50%;
+            animation: bounce 1.2s infinite ease-in-out both;
+        }
+        .thinking-bubble::after {
+            animation-delay: 0.4s;
+        }
+        .thinking-bubble .third-dot {
+            animation-delay: 0.2s;
+        }
+        @keyframes bounce {
+            0%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-5px);
+            }
+        }
+        .thinking-bubble.failed {
+            background-color: darkred;
+        }
+        .thinking-bubble.failed::before, .thinking-bubble.failed::after, .thinking-bubble.failed .third-dot {
+            animation: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="topbar-container">
+        <select class="dropdown">
+            <option value="ThingAI 2.0 Pro">ThingAI 2.0 Pro</option>
+            <option value="ThingAI 2.0">ThingAI 2.0</option>
+            <option value="ThingAI 2.0 Lite">ThingAI 2.0 Lite</option>
+            <option value="ThingAI 2.0 Legacy">ThingAI 2.0 Legacy</option>
+            <option value="ThingAI 1.1">ThingAI 1.1</option>
+            <option value="ThingAI 1.1 Lite">ThingAI 1.1 Lite</option>
+            <option value="ThingAI 1.0 Pro">ThingAI 1.0 Pro</option>
+            <option value="ThingAI 1.0">ThingAI 1.0</option>
+            <option value="ThingAI 1.0 Lite">ThingAI 1.0 Lite</option>
+        </select>
+        <button class="plus-button" id="plus-button">
+            <img src="https://raw.githubusercontent.com/ThingAI/ThingAI-Website/refs/heads/main/Assets/plus.svg" alt="Plus">
+        </button>
+    </div>
+    <div class="chat-messages" id="chat-messages"></div>
+    <div class="chatbox-container">
+        <button class="attachment-button" id="attachment-button">
+            <img src="https://raw.githubusercontent.com/ThingAI/ThingAI-Website/refs/heads/main/Assets/clip.svg" alt="Attach">
+        </button>
+        <input type="file" id="attachment-input" accept="image/*" style="display: none;">
+        <textarea class="chatbox" id="chatbox" placeholder="Type a message..."></textarea>
+        <button class="send-button" id="send-button">
+            <img src="https://raw.githubusercontent.com/ThingAI/ThingAI-Website/refs/heads/main/Assets/Send.svg" alt="Send">
+        </button>
+    </div>
+    <script>
+        const apiUrl = 'https://xapi.thingai.xyz/process-request';
+        let messageHistory = [];
+        let attachment = null;
+        let isRequestInProgress = false;
+        let memories = [];
+
+        document.getElementById('send-button').addEventListener('click', sendMessage);
+        document.getElementById('chatbox').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter' && !event.shiftKey) {
+                event.preventDefault();
+                sendMessage();
+            }
+        });
+
+        document.getElementById('plus-button').addEventListener('click', function() {
+            messageHistory = [];
+            console.log('Message history cleared');
+        });
+
+        document.getElementById('attachment-button').addEventListener('click', function() {
+            document.getElementById('attachment-input').click();
+        });
+
+        document.getElementById('attachment-input').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    img.className = 'attachment-preview';
+                    img.addEventListener('click', function() {
+                        attachment = null;
+                        document.getElementById('attachment-button').style.display = 'flex';
+                        img.remove();
+                        document.getElementById('attachment-input').value = '';
+                    });
+                    document.getElementById('attachment-button').style.display = 'none';
+                    document.querySelector('.chatbox-container').insertBefore(img, document.getElementById('chatbox'));
+                    attachment = file;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        function sendMessage() {
+            if (isRequestInProgress) return;
+
+            const chatbox = document.getElementById('chatbox');
+            const message = chatbox.value.trim();
+            if (message !== '' || attachment) {
+                isRequestInProgress = true;
+                document.getElementById('send-button').disabled = true;
+
+                if (attachment) {
+                    const imageContainer = document.createElement('div');
+                    imageContainer.className = 'image-message';
+                    const img = document.createElement('img');
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        img.src = e.target.result;
+                        imageContainer.appendChild(img);
+                    };
+                    reader.readAsDataURL(attachment);
+                    document.getElementById('chat-messages').appendChild(imageContainer);
+                }
+
+                if (message !== '') {
+                    const messageContainer = document.createElement('div');
+                    messageContainer.className = 'message';
+                    const textNode = document.createTextNode(message);
+                    messageContainer.appendChild(textNode);
+                    document.getElementById('chat-messages').appendChild(messageContainer);
+                }
+
+                const thinkingBubble = document.createElement('div');
+                thinkingBubble.className = 'thinking-bubble';
+                const thirdDot = document.createElement('div');
+                thirdDot.className = 'third-dot';
+                thinkingBubble.appendChild(thirdDot);
+                document.getElementById('chat-messages').appendChild(thinkingBubble);
+
+                const formattedMessage = {
+                    role: 'user',
+                    content: message,
+                    attachment: attachment ? attachment.name : null
+                };
+                messageHistory.push(formattedMessage);
+                console.log('Message history:', messageHistory);
+
+                chatbox.value = '';
+                chatbox.focus();
+                document.getElementById('chat-messages').lastChild.scrollIntoView({ behavior: 'smooth' });
+                adjustTextareaHeight();
+                chatbox.style.height = "40px";
+
+                if (attachment) {
+                    attachment = null;
+                    document.querySelector('.attachment-preview').remove();
+                    document.getElementById('attachment-button').style.display = 'flex';
+                    document.getElementById('attachment-input').value = '';
+                }
+
+                // Send message to API
+                const data = {
+                    model: document.querySelector('.dropdown').value,
+                    process_draw_command: "yes",
+                    messages: messageHistory,
+                    memories: memories,
+                    ip: "auto",
+                    dmmu_enabled: "auto"
+                };
+
+                fetch(apiUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                })
+                .then(response => response.json())
+                .then(json => {
+                    console.log('Response:', json);
+                    displayResponse(json, thinkingBubble);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    thinkingBubble.classList.add('failed');
+                    isRequestInProgress = false;
+                    document.getElementById('send-button').disabled = false;
+                });
+            }
+        }
+
+        function displayResponse(response, thinkingBubble) {
+            const responseContainer = document.createElement('div');
+            responseContainer.className = 'response-message';
+            const textNode = document.createTextNode(response.content || 'No response content');
+            responseContainer.appendChild(textNode);
+            document.getElementById('chat-messages').replaceChild(responseContainer, thinkingBubble);
+            responseContainer.scrollIntoView({ behavior: 'smooth' });
+            isRequestInProgress = false;
+            document.getElementById('send-button').disabled = false;
+        }
+
+        function adjustTextareaHeight() {
+            const chatbox = document.getElementById('chatbox');
+            chatbox.style.height = 'auto';
+            chatbox.style.height = Math.min(chatbox.scrollHeight, parseInt(getComputedStyle(chatbox).maxHeight)) + 'px';
+        }
+    </script>
+</body>
+</html>
