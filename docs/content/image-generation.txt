@@ -7,4 +7,4 @@
 <h1>Supported Image Generation Models</h1>
 <p>ThingAI currently supports image generation using "DALLE-3", "Pastel Mix Anime", "I can't believe its not a photograph" and "Am i Real".</p>
 <h1>Adding Image generation to the API Request</h1>
-<p>Image generation itself doesn't need anything new in the API request but you need to add a key named "process_draw_command" and either set it to "yes", "legacy" or "no" depending if you want ThingAI to generate the image for you and what response format do you want it to use.</p>
+<p>Image generation itself doesn't need anything new in the API request but you need to add a key named "process_draw_command" and either set it to "yes", "legacy" or "no" depending if you want ThingAI to generate the image for you and what response format do you want it to use with "yes" including the image url under a separate key and "legacy" including the image url under the content key after the string "&^%image".</p>
