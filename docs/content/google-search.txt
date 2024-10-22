@@ -1,2 +1,9 @@
-<h1>Content soon</h1>
-<p>Yeh</p>
+<h1>Google search is currently only avaiable in the Pro Models</h1>
+<h1>The Basics</h1>
+<p>Google search gives ThingAI way more context related to the users prompt.</p>
+<h1>Toggling Google Search</h1>
+<p>Google search is disabled by default but you can enable it by including the key "google-search" in the request and setting it to true.</p>
+<h1>Sources</h1>
+<p>ThingAI will automatically provide the sources it used in the API response under the key "sources" inside an array.</p>
+<h1>Adding the database to the API Request</h1>
+<p>You only need to add the "google-search" key mentioned earlier and you're good to go.</p>
